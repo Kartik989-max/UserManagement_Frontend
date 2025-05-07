@@ -12,7 +12,7 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log('api call',`${process.env.BACKEND_URI}/api/user`);
+        console.log('api call',`${apiUrl}/api/user`);
         
         const res = await axios.get<User[]>( `${apiUrl}/api/user`);
         setUser(res.data);
