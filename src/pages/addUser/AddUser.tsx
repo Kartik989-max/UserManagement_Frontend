@@ -3,7 +3,10 @@ import axios from 'axios'
 import  type {UserFormData} from '../../components/userForm/UserForm';
 import { useNavigate } from 'react-router';
 import UserForm from '../../components/userForm/UserForm';
+
+
 const AddUser:React.FC = () => {
+
   const navigate=useNavigate();
   const handleAddUser = async (data:UserFormData) => {
     try {
