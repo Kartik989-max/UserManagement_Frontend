@@ -11,7 +11,7 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log('api call',`https://react-usermanagement-backend.onrender.com/api/user`);
+        console.log('api call',`${process.env.BACKEND_URI}/api/user`);
         
         const res = await axios.get<User[]>( `https://react-usermanagement-backend.onrender.com/api/user`);
         setUser(res.data);
