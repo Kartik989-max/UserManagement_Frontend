@@ -11,9 +11,9 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log(`${process.env.REACT_APP_API_BASE_URL}/user`);
+        console.log(`${process.env.REACT_APP_API_BASE_URL}/api/user`);
         
-        const res = await axios.get<User[]>( `${process.env.REACT_APP_API_BASE_URL}/user`);
+        const res = await axios.get<User[]>( `${process.env.REACT_APP_API_BASE_URL}/api/user`);
         setUser(res.data);
         setFilteredUser(res.data);
       } catch (error) {
