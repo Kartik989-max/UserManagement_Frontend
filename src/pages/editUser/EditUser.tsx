@@ -10,7 +10,7 @@ const EditUser:React.FC = () => {
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
-        const res=await axios.get(`http://localhost:5000/api/user/${id}`)
+        const res=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/user/${id}`)
         setEditFormData(res.data);
         console.log(res.data);
       }
@@ -23,7 +23,7 @@ const EditUser:React.FC = () => {
 
   const handleFormSubmit = async (data:UserFormData) => {
     try {
-      await axios.put(`http://localhost:5000/api/user/${id}`, data);
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/user/${id}`, data);
       alert("User updated successfully");
       navigate('/'); 
     } catch (error) {
