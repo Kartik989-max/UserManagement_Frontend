@@ -4,13 +4,14 @@ import { useParams , useNavigate} from 'react-router';
 import type { UserFormData } from '../../components/userForm/UserForm';
 import UserForm from '../../components/userForm/UserForm';
 const EditUser:React.FC = () => {
+  const apiBase = process.env.REACT_APP_API_BASE_URL;
   const {id}=useParams<{id:string}>();
   const [editFormData, setEditFormData] = useState<UserFormData | null>(null);
   const navigate=useNavigate();
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
-        const res=await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/user/${id}`)
+        const res=await axios.get(`${apiBase}/api/user/${id}`)
         setEditFormData(res.data);
         console.log(res.data);
       }
@@ -23,7 +24,7 @@ const EditUser:React.FC = () => {
 
   const handleFormSubmit = async (data:UserFormData) => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/user/${id}`, data);
+      await axios.put(`${apiBase}/api/user/${id}`, data);
       alert("User updated successfully");
       navigate('/'); 
     } catch (error) {
