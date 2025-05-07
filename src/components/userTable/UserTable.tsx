@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import type User from "../../types/User";
 
 const UserTable: React.FC = () => {
+  const apiUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
   const [user, setUser] = useState<User[]>([]);
   const [filteredUser, setFilteredUser] = useState<User[]>([]);
   const [searchEmail, setSearchEmail] = useState<string>("");
@@ -13,7 +14,7 @@ const UserTable: React.FC = () => {
       try {
         console.log('api call',`${process.env.BACKEND_URI}/api/user`);
         
-        const res = await axios.get<User[]>( `https://react-usermanagement-backend.onrender.com/api/user`);
+        const res = await axios.get<User[]>( `${apiUrl}/api/user`);
         setUser(res.data);
         setFilteredUser(res.data);
       } catch (error) {

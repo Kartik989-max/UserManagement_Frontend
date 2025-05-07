@@ -6,9 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import AddUser from "./pages/addUser/AddUser.tsx";
 import EditUser from "./pages/editUser/EditUser.tsx";
 import UserTable from "./components/userTable/UserTable.tsx";
-import dotenv from 'dotenv';
 
-dotenv.config();
 const router = createBrowserRouter([
   {
     path: "/",

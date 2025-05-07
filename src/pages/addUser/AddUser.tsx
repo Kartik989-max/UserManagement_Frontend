@@ -6,11 +6,11 @@ import UserForm from '../../components/userForm/UserForm';
 
 
 const AddUser:React.FC = () => {
-  const apiBase = process.env.REACT_APP_API_BASE_URL;
   const navigate=useNavigate();
+  const apiUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
   const handleAddUser = async (data:UserFormData) => {
     try {
-      const res=await axios.post(`${apiBase}/api/user/add`, data);
+      const res=await axios.post(`${apiUrl}/api/user/add`, data);
       alert(res.data.message);
       navigate('/');
     } catch (err) {
