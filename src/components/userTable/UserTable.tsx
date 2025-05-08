@@ -9,6 +9,8 @@ const UserTable: React.FC = () => {
   const [filteredUser, setFilteredUser] = useState<User[]>([]);
   const [searchEmail, setSearchEmail] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [loading,setloading]=useState<boolean>(true);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -19,6 +21,9 @@ const UserTable: React.FC = () => {
         setFilteredUser(res.data);
       } catch (error) {
         console.log("Error in fetching User data" + error);
+      }
+      finally{
+        setloading(false);
       }
     };
     fetchUser();
@@ -104,7 +109,10 @@ const UserTable: React.FC = () => {
             <th className="px-4 py-2 border">Edit</th>
           </tr>
         </thead>
-        <tbody>
+        {loading ?(
+        <p className="mt-4 text-center text-gray-500">Loading...</p>
+        ):(
+          <tbody>
           {filteredUser.map((users, index) => (
             <tr key={index} className="border-t">
               <td className="px-4 py-2 font-semibold">
@@ -129,6 +137,7 @@ const UserTable: React.FC = () => {
             </tr>
           )}
         </tbody>
+        )}
       </table>
           </div>
     </>
